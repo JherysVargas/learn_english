@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memory_cards_flutter/config/colors.dart';
+import 'package:memory_cards_flutter/core/theme/colors.dart';
 
 class AppTheme {
   static final ThemeData theme = ThemeData.dark().copyWith(
@@ -8,6 +8,7 @@ class AppTheme {
       primary: ColorsApp.primary,
       seedColor: ColorsApp.primary,
       secondary: ColorsApp.secondary,
+      tertiary: ColorsApp.tertiary,
     ),
   );
 }

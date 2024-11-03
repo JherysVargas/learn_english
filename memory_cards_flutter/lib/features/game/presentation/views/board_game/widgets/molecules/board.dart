@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:memory_cards_flutter/features/game/domain/models/verb/verb_model.dart';
 
 import '../atoms/card.dart';
 
 class Board extends StatelessWidget {
-  final int quantityItems;
+  final List<VerbModel> verbs;
 
-  const Board({super.key, required this.quantityItems});
+  const Board({super.key, required this.verbs});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        const int columns = 3;
+        final int quantity = verbs.length;
+        final int columns = quantity > 12 ? 4 : 3;
         const double axisSpacing = 4;
         const double horizontalPadding = 20;
         const double verticalPadding = 16;
 
         final double maxHeight = constraints.maxHeight;
-        final int rows = (quantityItems / columns).ceil();
+        final int rows = (quantity / columns).ceil();
 
         const double totalVerticalPadding = verticalPadding * 2;
         final double totalAxisSpacing = axisSpacing * rows;
@@ -26,7 +28,7 @@ class Board extends StatelessWidget {
             (maxHeight - (totalVerticalPadding + totalAxisSpacing)) / rows;
 
         return GridView.builder(
-          itemCount: quantityItems,
+          itemCount: quantity,
           physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(
             horizontal: horizontalPadding,
@@ -38,8 +40,10 @@ class Board extends StatelessWidget {
             mainAxisSpacing: axisSpacing,
             crossAxisSpacing: axisSpacing,
           ),
-          itemBuilder: (BuildContext _, int __) {
-            return const CustomFlipCard();
+          itemBuilder: (BuildContext _, int index) {
+            return CustomFlipCard(
+              verb: verbs[index],
+            );
           },
         );
       },
