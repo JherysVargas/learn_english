@@ -19,12 +19,23 @@ class CustomFlipCard extends StatefulWidget {
 class _CustomFlipCardState extends State<CustomFlipCard> {
   late final FlipCardController _controllerFlip = FlipCardController();
 
-  Color _getColor(StatusMatchVerb status) {
+  Color _getColorCard(StatusMatchVerb status) {
     return switch (status) {
       StatusMatchVerb.match => Theme.of(context).colorScheme.primary,
       StatusMatchVerb.pending => Theme.of(context).colorScheme.tertiary,
       _ => Theme.of(context).colorScheme.tertiary
     };
+  }
+
+  TextStyle? _getStyleText(StatusMatchVerb status) {
+    final TextStyle? style = switch (status) {
+      StatusMatchVerb.match => Theme.of(context).textTheme.labelLarge,
+      _ => Theme.of(context).textTheme.labelMedium
+    };
+
+    return style?.copyWith(
+      color: Colors.black87,
+    );
   }
 
   _handleSelectedVerb(bool isFront) async {
@@ -78,7 +89,7 @@ class _CustomFlipCardState extends State<CustomFlipCard> {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: _getColor(
+        color: _getColorCard(
           state[widget.verb.id]?.statusMatchVerb ?? StatusMatchVerb.none,
         ),
         borderRadius: BorderRadius.circular(16),
@@ -86,9 +97,9 @@ class _CustomFlipCardState extends State<CustomFlipCard> {
       child: Center(
         child: Text(
           text.capitalize(),
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: Colors.black87,
-              ),
+          style: _getStyleText(
+            state[widget.verb.id]?.statusMatchVerb ?? StatusMatchVerb.none,
+          ),
         ),
       ),
     );

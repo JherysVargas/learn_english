@@ -1,1 +1,1 @@
-export 'board_game/board_game.dart';
+export 'match_cards_game/match_cards_game.dart';

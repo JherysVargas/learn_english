@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Learn English',
       theme: AppTheme.theme,
-      home: const BoardGame(),
+      home: const MatchCardsGame(),
       debugShowCheckedModeBanner: false,
     );
   }

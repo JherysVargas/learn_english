@@ -5,8 +5,6 @@ import 'package:logger/logger.dart';
 
 import 'injector.config.dart';
 
-final injector = GetIt.instance;
-
 final getIt = GetIt.instance;
 
 @InjectableInit(

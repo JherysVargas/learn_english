@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:learn_english_flutter/features/game/domain/models/verb/verb_model.dart';
 
-import '../atoms/card.dart';
+import 'card.dart';
 
-class Board extends StatelessWidget {
+class GridBoard extends StatelessWidget {
   final List<VerbModel> verbs;
 
-  const Board({super.key, required this.verbs});
+  const GridBoard({super.key, required this.verbs});
 
   @override
   Widget build(BuildContext context) {

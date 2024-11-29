@@ -35,3 +35,14 @@ final class GameLoaded extends GameState {
 }
 
 final class GameError extends GameState {}
+
+final class GameFinished extends GameState {
+  final int quantityMatches;
+
+  const GameFinished({required this.quantityMatches});
+
+  @override
+  List<Object> get props => [quantityMatches];
+}
+
+final class GameReset extends GameState {}
